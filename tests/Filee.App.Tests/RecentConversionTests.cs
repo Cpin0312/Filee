@@ -252,6 +252,39 @@ public class RecentConversionTests
     }
 
     [AvaloniaFact]
+    public void Only_a_text_result_opens_in_mi_and_only_when_mi_is_installed()
+    {
+        TestServices.EnsureInitialized("en");
+        var loc = AppHost.Get<ILocalizer>();
+        var folder = Directory.CreateTempSubdirectory("filee-mi-").FullName;
+        try
+        {
+            var text = Path.Combine(folder, "notes.md");
+            var table = Path.Combine(folder, "table.csv");
+            var picture = Path.Combine(folder, "photo.png");
+            foreach (var file in new[] { text, table, picture })
+                File.WriteAllBytes(file, [0]);
+            var platform = new OpeningPlatform(false) { HasMi = true };
+
+            var item = new HistoryItemViewModel(Entry([text]), loc, platform);
+            Assert.True(item.CanOpenInMi);
+            item.OpenInMiCommand.Execute(null);
+            Assert.True(new HistoryItemViewModel(Entry([table]), loc, platform).CanOpenInMi);
+            var image = new HistoryItemViewModel(Entry([picture]), loc, platform);
+            Assert.False(image.CanOpenInMi);
+            image.OpenInMiCommand.Execute(null);
+            Assert.Equal([text], platform.OpenedInMi);
+
+            platform.HasMi = false;
+            Assert.False(new HistoryItemViewModel(Entry([text]), loc, platform).CanOpenInMi);
+        }
+        finally
+        {
+            Directory.Delete(folder, true);
+        }
+    }
+
+    [AvaloniaFact]
     public async Task Undo_moves_the_results_to_the_trash_while_they_are_as_the_job_left_them()
     {
         TestServices.EnsureInitialized("en");
@@ -380,7 +413,7 @@ public class RecentConversionTests
             Assert.True(page.History[1].HasThumbnail);
             Assert.False(page.History[2].HasThumbnail);
             Assert.Equal("PDF", page.History[2].FormatBadge);
-            Assert.All(page.History, item => Assert.Equal(OperatingSystem.IsWindows(), item.CanOpenWith));
+            Assert.All(page.History, item => Assert.Equal(OperatingSystem.IsWindows() || OperatingSystem.IsMacOS(), item.CanOpenWith));
             Assert.Equal([true, false, false], page.History.Select(item => item.CanUndo));
 
             // A search lists them anew: the thumbnails come from the cache at once.
@@ -507,6 +540,9 @@ public class RecentConversionTests
         public bool SupportsOpenWith => openWith;
         public void OpenFile(string path) => Opened.Add(path);
         public void OpenWith(string path) => OpenedWith.Add(path);
+        public List<string> OpenedInMi { get; } = [];
+        public bool HasMi { get; set; }
+        public void OpenInMi(string path) => OpenedInMi.Add(path);
         public bool IsFileManagerAt(int x, int y) => false;
         public string? ProcessNameAt(int x, int y) => null;
         public IReadOnlyList<string> GetFileManagerSelection() => [];

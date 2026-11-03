@@ -43,6 +43,7 @@
   "home.open_folder": "فتح المجلد",
   "home.open_file": "فتح الملف",
   "home.open_with": "فتح باستخدام",
+  "home.open_in_mi": "فتح في mi",
   "home.clear_history": "مسح",
   "home.files": "عدد الملفات: {0}",
   "home.failed_files": "فشل: {0}",

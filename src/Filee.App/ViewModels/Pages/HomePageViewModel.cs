@@ -48,6 +48,8 @@ public sealed partial class HistoryItemViewModel : ObservableObject
         // output folder ("Extract") opens in the file manager.
         CanOpen = _output is not null && (FormatRegistry.Detect(_output) is not null || Directory.Exists(_output));
         CanOpenWith = CanOpen && platform.SupportsOpenWith && !Directory.Exists(_output!);
+        CanOpenInMi = CanOpen && platform.HasMi && FormatRegistry.Detect(_output!) is { } format
+            && (format.Category is FormatCategory.Text or FormatCategory.Data || format.Id == "csv");
 
         // The card shows the result: its picture when it is one, else its format. A job without results shows a source.
         var shown = _output ?? entry.Outputs.FirstOrDefault() ?? entry.Sources.FirstOrDefault();
@@ -83,6 +85,9 @@ public sealed partial class HistoryItemViewModel : ObservableObject
 
     /// <summary>"Open with": an output file, on a system with an "Open with" dialog.</summary>
     public bool CanOpenWith { get; }
+
+    /// <summary>"Open in mi": a text output (text, data or CSV), when the editor mi is installed.</summary>
+    public bool CanOpenInMi { get; }
 
     /// <summary>The picture the card shows, loaded in the background (<see cref="HomePageViewModel"/>); null until then.</summary>
     internal string? ThumbnailSource { get; }
@@ -195,6 +200,13 @@ public sealed partial class HistoryItemViewModel : ObservableObject
     {
         if (CanOpenWith && File.Exists(_output))
             _platform.OpenWith(_output!);
+    }
+
+    [RelayCommand]
+    private void OpenInMi()
+    {
+        if (CanOpenInMi && File.Exists(_output))
+            _platform.OpenInMi(_output!);
     }
 }
 

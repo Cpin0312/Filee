@@ -43,6 +43,7 @@
   "home.open_folder": "Ordner öffnen",
   "home.open_file": "Datei öffnen",
   "home.open_with": "Öffnen mit",
+  "home.open_in_mi": "In mi öffnen",
   "home.clear_history": "Leeren",
   "home.files": "{0} Dateien",
   "home.failed_files": "{0} fehlgeschlagen",

@@ -43,6 +43,7 @@
   "home.open_folder": "Klasörü aç",
   "home.open_file": "Dosyayı aç",
   "home.open_with": "Birlikte aç",
+  "home.open_in_mi": "mi ile aç",
   "home.clear_history": "Temizle",
   "home.files": "{0} dosya",
   "home.failed_files": "{0} başarısız",

@@ -46,6 +46,7 @@
   "home.open_folder": "폴더 열기",
   "home.open_file": "파일 열기",
   "home.open_with": "연결 프로그램",
+  "home.open_in_mi": "mi에서 열기",
   "home.clear_history": "지우기",
   "home.files": "파일 {0}개",
   "home.failed_files": "{0}개 실패",

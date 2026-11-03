@@ -46,6 +46,7 @@
   "home.open_folder": "Abrir pasta",
   "home.open_file": "Abrir ficheiro",
   "home.open_with": "Abrir com",
+  "home.open_in_mi": "Abrir no mi",
   "home.clear_history": "Limpar",
   "home.files": "{0} ficheiros",
   "home.failed_files": "Falhas: {0}",

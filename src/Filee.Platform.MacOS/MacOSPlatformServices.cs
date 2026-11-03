@@ -120,6 +120,12 @@ public sealed class MacOSPlatformServices : IPlatformServices
     /// <summary>Through open(1), like a double-click in Finder.</summary>
     public void OpenFile(string path) => Run("/usr/bin/open", [Path.GetFullPath(path)], 10_000);
 
+    public bool HasMi =>
+        Directory.Exists("/Applications/mi.app") || Directory.Exists(Path.Combine(UserApplications, "mi.app"));
+
+    /// <summary>By bundle id, so open(1) finds mi wherever it is installed.</summary>
+    public void OpenInMi(string path) => Run("/usr/bin/open", ["-b", "net.mimikaki.mi", Path.GetFullPath(path)], 10_000);
+
     public bool SupportsOpenWith => true;
 
     /// <summary>
@@ -175,6 +181,8 @@ public sealed class MacOSPlatformServices : IPlatformServices
 
     internal static IReadOnlyList<string> ParseSelection(string json) =>
         JsonSerializer.Deserialize<string[]>(json) ?? [];
+
+    private static string UserApplications => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Applications");
 
     private static string UserLibrary => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Library");
 

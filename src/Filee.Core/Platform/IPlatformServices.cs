@@ -146,6 +146,12 @@ public interface IPlatformServices
     /// </summary>
     void OpenWith(string path) { }
 
+    /// <summary>Whether the text editor mi is installed (macOS).</summary>
+    bool HasMi => false;
+
+    /// <summary>Opens <paramref name="path"/> in mi (only where <see cref="HasMi"/>).</summary>
+    void OpenInMi(string path) { }
+
     /// <summary>
     /// Puts an always-on-top window back at the top of the z-order without activating it. Windows can push such a
     /// window below normal ones (seen after the Photos app opened) while it still reports itself as topmost.

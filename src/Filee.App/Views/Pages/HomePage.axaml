@@ -102,7 +102,13 @@
                         <TextBlock Text="{DynamicResource home.open_file}" />
                       </StackPanel>
                     </Button>
-                    <!-- Only where the system has an "Open with" dialog (Windows). -->
+                    <Button Command="{Binding OpenInMiCommand}" IsVisible="{Binding CanOpenInMi}" Padding="10,5">
+                      <StackPanel Orientation="Horizontal" Spacing="6">
+                        <PathIcon Width="13" Height="13" Data="{StaticResource Icon.File}" />
+                        <TextBlock Text="{DynamicResource home.open_in_mi}" />
+                      </StackPanel>
+                    </Button>
+                    <!-- Only where the system has an "Open with" dialog (Windows, macOS). -->
                     <Button Command="{Binding OpenWithCommand}" IsVisible="{Binding CanOpenWith}" Padding="8,5"
                             ToolTip.Tip="{DynamicResource home.open_with}" AutomationProperties.Name="{DynamicResource home.open_with}">
                       <PathIcon Width="13" Height="13" Data="{StaticResource Icon.OpenWith}" />

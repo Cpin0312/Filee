@@ -46,6 +46,7 @@
   "home.open_folder": "打开文件夹",
   "home.open_file": "打开文件",
   "home.open_with": "打开方式",
+  "home.open_in_mi": "在 mi 中打开",
   "home.clear_history": "清除",
   "home.files": "{0} 个文件",
   "home.failed_files": "{0} 个失败",

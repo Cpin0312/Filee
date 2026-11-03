@@ -46,6 +46,7 @@
   "home.open_folder": "Ouvrir le dossier",
   "home.open_file": "Ouvrir le fichier",
   "home.open_with": "Ouvrir avec",
+  "home.open_in_mi": "Ouvrir dans mi",
   "home.clear_history": "Effacer",
   "home.files": "{0} fichiers",
   "home.failed_files": "{0} en échec",

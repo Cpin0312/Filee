@@ -46,6 +46,7 @@
   "home.open_folder": "Открыть папку",
   "home.open_file": "Открыть файл",
   "home.open_with": "Открыть с помощью",
+  "home.open_in_mi": "Открыть в mi",
   "home.clear_history": "Очистить",
   "home.files": "Файлов: {0}",
   "home.failed_files": "Ошибок: {0}",

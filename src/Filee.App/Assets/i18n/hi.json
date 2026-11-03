@@ -43,6 +43,7 @@
   "home.open_folder": "फ़ोल्डर खोलें",
   "home.open_file": "फ़ाइल खोलें",
   "home.open_with": "इसके साथ खोलें",
+  "home.open_in_mi": "mi में खोलें",
   "home.clear_history": "साफ़ करें",
   "home.files": "{0} फ़ाइलें",
   "home.failed_files": "{0} विफल",
