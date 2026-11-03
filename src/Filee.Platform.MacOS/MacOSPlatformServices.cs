@@ -120,6 +120,33 @@ public sealed class MacOSPlatformServices : IPlatformServices
     /// <summary>Through open(1), like a double-click in Finder.</summary>
     public void OpenFile(string path) => Run("/usr/bin/open", [Path.GetFullPath(path)], 10_000);
 
+    public bool SupportsOpenWith => true;
+
+    /// <summary>
+    /// macOS's own "Choose Application" panel, then open(1) with the picked app. The panel waits for the user, so it
+    /// runs on a thread of its own, never on the UI thread.
+    /// </summary>
+    public void OpenWith(string path)
+    {
+        var file = Path.GetFullPath(path);
+        new Thread(() =>
+        {
+            try
+            {
+                var app = Run("/usr/bin/osascript",
+                    ["-e", "POSIX path of (choose application as alias)"], 10 * 60_000).Trim();
+                if (app.Length > 0)
+                    Run("/usr/bin/open", ["-a", app, file], 10_000);
+            }
+            // Cancelling makes osascript fail (-128): nothing to report.
+            catch (Exception ex) when (ex is IOException or TimeoutException)
+            {
+                Trace.TraceWarning($"Open with failed: {ex.Message}");
+            }
+        })
+        { IsBackground = true, Name = "Open with" }.Start();
+    }
+
     public void OpenAccessibilitySettings() =>
         Run("/usr/bin/open", ["x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility"], 10_000);
 
