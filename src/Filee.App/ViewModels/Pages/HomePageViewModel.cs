@@ -48,8 +48,7 @@ public sealed partial class HistoryItemViewModel : ObservableObject
         // output folder ("Extract") opens in the file manager.
         CanOpen = _output is not null && (FormatRegistry.Detect(_output) is not null || Directory.Exists(_output));
         CanOpenWith = CanOpen && platform.SupportsOpenWith && !Directory.Exists(_output!);
-        CanOpenInMi = CanOpen && platform.HasMi && FormatRegistry.Detect(_output!) is { } format
-            && (format.Category is FormatCategory.Text or FormatCategory.Data || format.Id == "csv");
+        CanOpenInMi = CanOpen && platform.HasMi && FormatRegistry.Detect(_output!) is { } format && MiEditor.CanOpen(format);
 
         // The card shows the result: its picture when it is one, else its format. A job without results shows a source.
         var shown = _output ?? entry.Outputs.FirstOrDefault() ?? entry.Sources.FirstOrDefault();

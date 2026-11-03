@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "الزاوية السفلية اليمنى",
   "crop.corner_bottom_left": "الزاوية السفلية اليسرى",
   "preset.hide": "بكسلة / تمويه",
+  "preset.open_in_mi": "فتح في mi",
   "preset.hide.donut": "بكسلة",
   "error.cannot_hide": "البكسلة والتمويه متاحان للصور فقط",
   "hide.save": "إخفاء وحفظ",

@@ -258,9 +258,12 @@ public sealed class Preset
     /// </summary>
     public const string HideTool = "hide";
 
+    /// <summary><see cref="Tool"/> of "Open in mi": text files opened as they are in the mi editor (macOS), not converted.</summary>
+    public const string OpenInMiTool = "open-in-mi";
+
     /// <summary>
     /// <see cref="PresetKind.Tool"/>: which window it opens, <see cref="CropTool"/> (or null, as saved before there were
-    /// other tools), <see cref="ClipTool"/>, <see cref="ImageEditTool"/> or <see cref="HideTool"/>. A tool this version
+    /// other tools), <see cref="ClipTool"/>, <see cref="ImageEditTool"/>, <see cref="HideTool"/> or <see cref="OpenInMiTool"/>. A tool this version
     /// doesn't know (from a newer Filee) opens nothing. Ignored for other kinds.
     /// </summary>
     public string? Tool { get; set; }
@@ -280,6 +283,10 @@ public sealed class Preset
     /// <summary>True for "Pixelate / blur".</summary>
     [JsonIgnore]
     public bool IsHideTool => IsTool && Tool == HideTool;
+
+    /// <summary>True for "Open in mi".</summary>
+    [JsonIgnore]
+    public bool IsOpenInMiTool => IsTool && Tool == OpenInMiTool;
 
     /// <summary>
     /// True if converting a <paramref name="sourceFormat"/> file cuts a clip of it (<see cref="MediaOptions.Clip"/>,

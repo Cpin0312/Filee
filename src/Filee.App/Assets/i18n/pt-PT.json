@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "Canto inferior direito",
   "crop.corner_bottom_left": "Canto inferior esquerdo",
   "preset.hide": "Pixelizar / desfocar",
+  "preset.open_in_mi": "Abrir no mi",
   "preset.hide.donut": "Pixelizar",
   "error.cannot_hide": "Só é possível pixelizar ou desfocar imagens",
   "hide.save": "Ocultar e guardar",

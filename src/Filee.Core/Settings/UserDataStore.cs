@@ -955,6 +955,10 @@ internal static class SettingsMigrations
         //      renumbered if another change takes it first.)
         if (from < 58)
             changed |= LearnExtensions(profiles, out _, ["c", "h", "cpp", "cc", "cxx", "hpp", "hh", "hxx", "cs"]);
+        // v59: "Open in mi", after "Pixelate / blur" as in a new library, and on macOS first on the front of the text
+        //      donut when the user hasn't put it on either face: the front when it has room, else the end of the back.
+        if (from < 59)
+            changed |= AddOpenInMi(presets, profiles);
         return changed;
     }
 
@@ -1169,6 +1173,28 @@ internal static class SettingsMigrations
             changed = true;
         }
         return changed;
+    }
+
+    private static bool AddOpenInMi(List<Preset> presets, List<ToolbarProfile> profiles)
+    {
+        var changed = false;
+        var tool = BuiltInData.OpenInMiPresets().Single();
+        if (presets.All(p => p.Id != tool.Id))
+        {
+            var at = presets.FindIndex(p => p.Id == "tool-hide");
+            presets.Insert(at < 0 ? presets.Count : at + 1, tool);
+            changed = true;
+        }
+        if (!OperatingSystem.IsMacOS() || profiles.FirstOrDefault(p => p.Id == "text") is not { } text
+            || text.PresetIds.Contains(tool.Id) || text.BackPresetIds?.Contains(tool.Id) == true)
+            return changed;
+        if (text.PresetIds.Count < ToolbarProfile.MaxSlices)
+            text.PresetIds.Insert(0, tool.Id);
+        else if (text.BackPresetIds is { Count: < ToolbarProfile.MaxSlices } back)
+            back.Add(tool.Id);
+        else
+            return changed;
+        return true;
     }
 
     private static bool AddHideTool(List<Preset> presets, List<ToolbarProfile> profiles)

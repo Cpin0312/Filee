@@ -154,6 +154,8 @@ public sealed class WindowService(ILocalizer loc, IServiceProvider services, Mem
             ShowHideWindow(files, preset, near);
         else if (preset.IsImageEditTool)
             ShowImageEditWindow(files, preset);
+        else if (preset.IsOpenInMiTool)
+            MiEditor.Open(files, services.GetRequiredService<Filee.Core.Platform.IPlatformServices>());
         // Before the crop: the print studio and the PDF page tools have no Tool of their own, which reads as a crop
         // ("Crop PDF" is one and opens the crop overlay).
         else if (preset.Id == "tool-sheet-studio")

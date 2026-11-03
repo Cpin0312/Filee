@@ -3,6 +3,7 @@
 using Filee.Core.Conversion;
 using Filee.Core.Formats;
 using Filee.Core.Localization;
+using Filee.Core.Platform;
 using Filee.Core.Presets;
 
 namespace Filee.App.Services;
@@ -19,8 +20,11 @@ public sealed class PresetAvailability
     private readonly IReadOnlyList<EnginePackageState> _packages;
     private readonly Func<RoutePlanner> _installedPlanner;
 
-    public PresetAvailability(ConverterCatalog catalog, ILocalizer loc, EngineDownloadService downloads)
-        : this(catalog, loc, downloads.Packages) { }
+    public PresetAvailability(ConverterCatalog catalog, ILocalizer loc, EngineDownloadService downloads, IPlatformServices platform)
+        : this(catalog, loc, downloads.Packages) => HasMi = () => platform.HasMi;
+
+    /// <summary>Whether the mi editor is installed, for "Open in mi".</summary>
+    internal Func<bool> HasMi { get; init; } = () => false;
 
     internal PresetAvailability(ConverterCatalog catalog, ILocalizer loc, IReadOnlyList<EnginePackageState> packages)
         : this(catalog, loc, packages, catalog.CreatePlanner) { }
@@ -137,6 +141,15 @@ public sealed class PresetAvailability
             return formats.Any(f => HideService.CanOpen(f.Id))
                 ? new(PresetUse.Usable, null)
                 : new(PresetUse.Unusable, _loc["error.images_only"]);
+
+        if (preset.IsOpenInMiTool)
+        {
+            if (!HasMi())
+                return new(PresetUse.Unusable, _loc["engine.reason.unsupported_platform"]);
+            return formats.Any(MiEditor.CanOpen)
+                ? new(PresetUse.Usable, null)
+                : new(PresetUse.Unusable, _loc["error.unsupported_source"]);
+        }
 
         if (preset.IsTool)
         {

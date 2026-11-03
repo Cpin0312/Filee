@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "오른쪽 아래 모서리",
   "crop.corner_bottom_left": "왼쪽 아래 모서리",
   "preset.hide": "모자이크·흐림",
+  "preset.open_in_mi": "mi에서 열기",
   "preset.hide.donut": "모자이크",
   "error.cannot_hide": "모자이크와 흐림은 이미지에만 할 수 있어요",
   "hide.save": "가리고 저장",

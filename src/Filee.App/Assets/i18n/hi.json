@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "नीचे दायाँ कोना",
   "crop.corner_bottom_left": "नीचे बायाँ कोना",
   "preset.hide": "पिक्सलेट / धुंधला",
+  "preset.open_in_mi": "mi में खोलें",
   "preset.hide.donut": "पिक्सलेट",
   "error.cannot_hide": "पिक्सलेट और धुंधला केवल इमेज पर काम करता है",
   "hide.save": "छिपाकर सहेजें",

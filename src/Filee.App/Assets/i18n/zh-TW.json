@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "右下角",
   "crop.corner_bottom_left": "左下角",
   "preset.hide": "馬賽克／模糊",
+  "preset.open_in_mi": "在 mi 中開啟",
   "preset.hide.donut": "馬賽克",
   "error.cannot_hide": "只能對圖片加上馬賽克或模糊",
   "hide.save": "遮蓋並儲存",

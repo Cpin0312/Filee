@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "Ecke unten rechts",
   "crop.corner_bottom_left": "Ecke unten links",
   "preset.hide": "Verpixeln / Weichzeichnen",
+  "preset.open_in_mi": "In mi öffnen",
   "preset.hide.donut": "Verpixeln",
   "error.cannot_hide": "Verpixeln und Weichzeichnen ist nur bei Bildern möglich",
   "hide.save": "Verbergen & Speichern",

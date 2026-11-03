@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "Coin inférieur droit",
   "crop.corner_bottom_left": "Coin inférieur gauche",
   "preset.hide": "Pixeliser / flouter",
+  "preset.open_in_mi": "Ouvrir dans mi",
   "preset.hide.donut": "Pixeliser",
   "error.cannot_hide": "Seules les images peuvent être pixelisées ou floutées",
   "hide.save": "Masquer et enregistrer",

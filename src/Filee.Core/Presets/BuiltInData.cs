@@ -59,6 +59,7 @@ public static class BuiltInData
         },
         .. ImageEditPresets(),
         .. HidePresets(),
+        .. OpenInMiPresets(),
         new()
         {
             Id = "tool-sheet-studio", NameKey = "preset.sheet_studio", TargetFormat = "pdf",
@@ -227,6 +228,19 @@ public static class BuiltInData
         {
             Id = "tool-hide", NameKey = "preset.hide", TargetFormat = SameAsSource,
             Kind = PresetKind.Tool, Tool = Preset.HideTool, Output = { FileNamePattern = "{name}_hidden" },
+        },
+    ];
+
+    /// <summary>
+    /// "Open in mi" (added in settings schema 59): text files opened as they are in the mi editor, on macOS where mi is
+    /// installed. First on the front of the text donut there.
+    /// </summary>
+    public static List<Preset> OpenInMiPresets() =>
+    [
+        new()
+        {
+            Id = "open-in-mi", NameKey = "preset.open_in_mi", TargetFormat = SameAsSource,
+            Kind = PresetKind.Tool, Tool = Preset.OpenInMiTool,
         },
     ];
 
@@ -664,7 +678,9 @@ public static class BuiltInData
         Id = "text",
         NameKey = "profile.text",
         Extensions = ExtensionsOf(FormatCategory.Text),
-        PresetIds = ["to-pdf", "to-hwpx", "to-hwp", "to-docx", "to-html", "to-txt", "to-epub"],
+        // "Open in mi" first on macOS, the one place mi runs (settings schema 59).
+        PresetIds = [.. OperatingSystem.IsMacOS() ? ["open-in-mi"] : Array.Empty<string>(),
+            "to-pdf", "to-hwpx", "to-hwp", "to-docx", "to-html", "to-txt", "to-epub"],
         BackPresetIds = ["translate", "to-md", "to-odt", "to-rtf", "to-kepub", "merge-pdf", "zip-all"],
     };
 

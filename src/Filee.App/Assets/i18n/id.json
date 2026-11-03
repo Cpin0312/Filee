@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "Sudut kanan-bawah",
   "crop.corner_bottom_left": "Sudut kiri-bawah",
   "preset.hide": "Pikselasi / buramkan",
+  "preset.open_in_mi": "Buka di mi",
   "preset.hide.donut": "Pikselasi",
   "error.cannot_hide": "Hanya gambar yang dapat dipikselasi atau diburamkan",
   "hide.save": "Sembunyikan & Simpan",

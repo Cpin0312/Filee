@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "Sağ alt köşe",
   "crop.corner_bottom_left": "Sol alt köşe",
   "preset.hide": "Pikselleştir / bulanıklaştır",
+  "preset.open_in_mi": "mi ile aç",
   "preset.hide.donut": "Mozaik",
   "error.cannot_hide": "Yalnızca görseller pikselleştirilebilir veya bulanıklaştırılabilir",
   "hide.save": "Gizle ve kaydet",

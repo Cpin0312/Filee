@@ -271,6 +271,7 @@
 "crop.corner_bottom_right": "Angolo in basso a destra",
 "crop.corner_bottom_left": "Angolo in basso a sinistra",
 "preset.hide": "Pixella / sfoca",
+"preset.open_in_mi": "Apri in mi",
 "preset.hide.donut": "Pixella",
 "error.cannot_hide": "Solo le immagini possono essere pixellate o sfocate",
 "hide.save": "Nascondi e salva",

@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "तल्लो दायाँ कुना",
   "crop.corner_bottom_left": "तल्लो बायाँ कुना",
   "preset.hide": "पिक्सलेट / धमिलो",
+  "preset.open_in_mi": "mi मा खोल्नुहोस्",
   "preset.hide.donut": "पिक्सलेट",
   "error.cannot_hide": "पिक्सलेट र धमिलो पार्ने कार्य केवल छविहरूमा मात्र काम गर्छ",
   "hide.save": "लुकाएर सुरक्षित गर्नुहोस्",

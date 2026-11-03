@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "Правый нижний угол",
   "crop.corner_bottom_left": "Левый нижний угол",
   "preset.hide": "Пикселизация / размытие",
+  "preset.open_in_mi": "Открыть в mi",
   "preset.hide.donut": "Мозаика",
   "error.cannot_hide": "Пикселизировать и размывать можно только изображения",
   "hide.save": "Скрыть и сохранить",

@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "Prawy dolny róg",
   "crop.corner_bottom_left": "Lewy dolny róg",
   "preset.hide": "Pikselizacja / rozmycie",
+  "preset.open_in_mi": "Otwórz w mi",
   "preset.hide.donut": "Mozaika",
   "error.cannot_hide": "Pikselizować i rozmywać można tylko obrazy",
   "hide.save": "Ukryj i zapisz",

@@ -280,6 +280,7 @@
   "crop.corner_bottom_right": "Bottom-right corner",
   "crop.corner_bottom_left": "Bottom-left corner",
   "preset.hide": "Pixelate / blur",
+  "preset.open_in_mi": "Open in mi",
   "preset.hide.donut": "Pixelate",
   "error.cannot_hide": "Only pictures can be pixelated or blurred",
   "hide.save": "Hide & Save",

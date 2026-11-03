@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "Esquina inferior derecha",
   "crop.corner_bottom_left": "Esquina inferior izquierda",
   "preset.hide": "Pixelar / difuminar",
+  "preset.open_in_mi": "Abrir en mi",
   "preset.hide.donut": "Pixelar",
   "error.cannot_hide": "Solo se pueden pixelar o difuminar imágenes",
   "hide.save": "Ocultar y guardar",

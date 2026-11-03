@@ -271,6 +271,7 @@
   "crop.corner_bottom_right": "มุมล่างขวา",
   "crop.corner_bottom_left": "มุมล่างซ้าย",
   "preset.hide": "โมเสก / เบลอ",
+  "preset.open_in_mi": "เปิดใน mi",
   "preset.hide.donut": "โมเสก",
   "error.cannot_hide": "ใส่โมเสกหรือเบลอได้เฉพาะไฟล์รูปภาพเท่านั้น",
   "hide.save": "ซ่อนและบันทึก",
